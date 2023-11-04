@@ -1,1 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Converter</title>
+
+    <style>
+        body {
+            padding: 50px 100px;
+            background-image: url('daniel-ramirez-q4TfWtnz_xw-unsplash.jpg'); /* Replace 'path_to_your_image.jpg' with the actual path to your image */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        #container {
+            text-align: center;
+            /*background-color: rgba(255, 255, 255, 0.8);*/
+            padding: 10px;
+            font-size: 25px;
+            font-style: oblique;
+            font-weight: bold;
+            
+        }
+
+        .input-type {
+            font-family: 'Times New Roman', Times, serif;
+           /* background-color: skyblue;*/
+            padding-bottom: 10px;
+        }
+
+        .inp {
+            padding: 5px 10px;
+            font-size: 30px;
+            font-style: italic;
+            font-variant: normal;
+            text-align: center;
+        }
+
+        label {
+            font-size: 20px;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Temperature Converter</h1>
+
+    <div id="container">
+        <p>Enter the Temperature value in any of the format</p>
+        <div class="input-type">
+            <label>Celsius</label>
+            <br>
+            <input type="number" id="cel" class="inp">
+        </div>
+        <div class="input-type">
+            <label>Farenhiet</label>
+            <br>
+            <input type="number" id="feh" class="inp">
+        </div>
+        <div class="input-type">
+            <label>Kelvin</label>
+            <br>
+            <input type="number" id="kel" class="inp">
+        </div>
+    </div>
+
+    <script>
+          var cel = document.getElementById("cel");
+var feh = document.getElementById("feh");
+var kel = document.getElementById("kel");
+
+cel.addEventListener('input', function () {
+    let c = parseFloat(this.value); // Parse the input value to ensure it's a number
+    let f = (c * 9 / 5) + 32;
+    let k = c + 273.15; // Corrected conversion from Celsius to Kelvin
+    feh.value = f;
+    kel.value = k;
+});
+
+feh.addEventListener('input', function () {
+    let f = parseFloat(this.value);
+    let c = (f - 32) * 5 / 9;
+    let k = (f - 32) * 5 / 9 + 273.15;
+    cel.value = c;
+    kel.value = k;
+});
+
+kel.addEventListener('input', function () {
+    let k = parseFloat(this.value);
+    let c = k - 273.15;
+    let f = (k - 273.15) * 9 / 5 + 32;
+    cel.value = c;
+    feh.value = f;
+});
+
+    </script>
+</body>
+
+</html>
 
